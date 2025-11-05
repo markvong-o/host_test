@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { resolve } from "path";
 import fs from "fs";
+import federation from "@originjs/vite-plugin-federation";
 
 // Dynamically discover screen directories
 const screensDir = resolve(__dirname, "src/screens");
@@ -25,7 +26,16 @@ if (fs.existsSync(screensDir)) {
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react({}),
+    federation({
+      name: "host_app",
+      remotes: {
+        mfe_app: "https://dellmfe.vercel.app/assets/remoteEntry.js",
+      },
+      shared: ["react", "react-dom"],
+    }),
+  ],
   server: {
     port: 3000,
     strictPort: true,
@@ -107,7 +117,7 @@ export default defineConfig({
         },
       },
     },
-    minify: true,
+    minify: false,
     emptyOutDir: true,
     cssCodeSplit: false, // Keep CSS in a single file
     sourcemap: true,

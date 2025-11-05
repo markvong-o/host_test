@@ -17,6 +17,7 @@
     "@auth0/auth0-acul-js": "1.0.0-alpha.1",
     "@base-ui-components/react": "^1.0.0-beta.1",
     "@hcaptcha/react-hcaptcha": "^1.12.1",
+    "@originjs/vite-plugin-federation": "^1.4.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "friendly-challenge": "^0.9.19",

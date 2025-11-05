@@ -24,34 +24,48 @@
       "tag": "link",
       "attributes": {
         "rel": "stylesheet",
-        "href": "https://dellaculsample.vercel.app/assets/shared/style.DGuickOL.css"
+        "href": "https://dellaculsample.vercel.app/assets/shared/style.DdYvK2i5.css"
       }
     },
     {
       "tag": "script",
       "attributes": {
-        "src": "https://dellaculsample.vercel.app/assets/main.BjeqMX5B.js",
+        "src": "https://dellaculsample.vercel.app/assets/shared/__federation_shared_react-dom.t00aXzUD.js",
         "type": "module"
       }
     },
     {
       "tag": "script",
       "attributes": {
-        "src": "https://dellaculsample.vercel.app/assets/shared/common.BeAKIXG4.js",
+        "src": "https://dellaculsample.vercel.app/assets/shared/__federation_shared_react.C4jBJ5Nn.js",
         "type": "module"
       }
     },
     {
       "tag": "script",
       "attributes": {
-        "src": "https://dellaculsample.vercel.app/assets/shared/vendor.BE3O9tfT.js",
+        "src": "https://dellaculsample.vercel.app/assets/shared/common.BizqoEgG.js",
         "type": "module"
       }
     },
     {
       "tag": "script",
       "attributes": {
-        "src": "https://dellaculsample.vercel.app/assets/login-id/index.BYCxxMgM.js",
+        "src": "https://dellaculsample.vercel.app/assets/shared/vendor.DJUJvSib.js",
+        "type": "module"
+      }
+    },
+    {
+      "tag": "script",
+      "attributes": {
+        "src": "https://dellaculsample.vercel.app/assets/main.BxhbOYv8.js",
+        "type": "module"
+      }
+    },
+    {
+      "tag": "script",
+      "attributes": {
+        "src": "https://dellaculsample.vercel.app/assets/login-id/index.DMUMDUWk.js",
         "type": "module"
       }
     }
