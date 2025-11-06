@@ -1,5 +1,5 @@
 // host - ./src/types/remote.d.ts
-declare module "mfe_app/MyRemoteComponent" {
-  const MyRemoteComponent: React.FC<{}>;
-  export default MyRemoteComponent;
+declare module "mfe_app/PrivacyComponent" {
+  const PrivacyComponent: React.FC<{}>;
+  export default PrivacyComponent;
 }

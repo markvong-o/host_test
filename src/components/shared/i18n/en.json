@@ -1,0 +1,30 @@
+{
+  "title": "Sign In",
+  "google_social_btn": "Google Sign In",
+  "email_label": "Email Address",
+  "pw_label": "Forgot password?",
+  "continue_btn": "Continue",
+  "missing_acct_content": "New User?",
+  "create_btn": "Create an account here",
+  "help_content": "Need help?",
+  "faq_content": "FAQ",
+  "benefits_title": "Account Benefits",
+  "benefits_subtitle": "Manage it all from your account",
+  "benefits": [
+    {
+      "icon": "Trophy",
+      "title": "Rewards Program",
+      "description": "Join our rewards program for free and earn up to 9% back in rewards to use toward future purchases."
+    },
+    {
+      "icon": "Search",
+      "title": "Order Tracking",
+      "description": "Track and manage your orders with real-time updates and delivery notifications."
+    },
+    {
+      "icon": "User",
+      "title": "Profile Settings",
+      "description": "Checkout faster with saved payment methods and addresses for a seamless experience."
+    }
+  ]
+}

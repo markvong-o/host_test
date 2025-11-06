@@ -31,7 +31,7 @@ export default defineConfig({
     federation({
       name: "host_app",
       remotes: {
-        mfe_app: "https://dellmfe.vercel.app/assets/remoteEntry.js",
+        mfe_app: "http://localhost:5001/assets/remoteEntry.js",
       },
       shared: ["react", "react-dom"],
     }),
@@ -64,8 +64,8 @@ export default defineConfig({
         // Screen-specific entries
         entryFileNames: (chunkInfo) =>
           screenEntries[chunkInfo.name]
-            ? `assets/${chunkInfo.name}/index.[hash].js`
-            : "assets/main.[hash].js",
+            ? `assets/${chunkInfo.name}/index.js`
+            : "assets/main.js",
 
         // Chunks naming strategy
         chunkFileNames: (chunkInfo) => {
@@ -77,20 +77,20 @@ export default defineConfig({
           );
 
           if (screenMatch) {
-            return `assets/${screenMatch}/chunk.[hash].js`;
+            return `assets/${screenMatch}/chunk.js`;
           }
 
           // For shared chunks, use a simplified naming scheme
-          return "assets/shared/[name].[hash].js";
+          return "assets/shared/[name].js";
         },
 
         // Assets naming (CSS, images, etc)
         assetFileNames: (assetInfo) => {
           const info = assetInfo.name || "";
           if (info.endsWith(".css")) {
-            return "assets/shared/style.[hash][extname]";
+            return "assets/shared/style.[extname]";
           }
-          return "assets/shared/[name].[hash][extname]";
+          return "assets/shared/[name].[extname]";
         },
 
         // Simplified manual chunks strategy with forced common chunk
@@ -117,7 +117,7 @@ export default defineConfig({
         },
       },
     },
-    minify: false,
+    minify: true,
     emptyOutDir: true,
     cssCodeSplit: false, // Keep CSS in a single file
     sourcemap: true,

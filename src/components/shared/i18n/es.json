@@ -1,0 +1,30 @@
+{
+  "title": "Iniciar Sesión",
+  "google_social_btn": "Iniciar Sesión con Google",
+  "email_label": "Correo Electrónico",
+  "pw_label": "¿Olvidaste la contraseña?",
+  "continue_btn": "Continuar",
+  "missing_acct_content": "¿Nuevo Usuario?",
+  "create_btn": "Crear una cuenta aquí",
+  "help_content": "¿Necesitas ayuda?",
+  "faq_content": "Preguntas Frecuentes (FAQ)",
+  "benefits_title": "Beneficios de la Cuenta",
+  "benefits_subtitle": "Administra todo desde tu cuenta",
+  "benefits": [
+    {
+      "icon": "Trophy",
+      "title": "Programa de Recompensas",
+      "description": "Únete a nuestro programa de recompensas gratis y gana hasta un 9% de vuelta en recompensas para usar en futuras compras."
+    },
+    {
+      "icon": "Search",
+      "title": "Seguimiento de Pedidos",
+      "description": "Rastrea y gestiona tus pedidos con actualizaciones en tiempo real y notificaciones de entrega."
+    },
+    {
+      "icon": "User",
+      "title": "Configuración de Perfil",
+      "description": "Paga más rápido con métodos de pago y direcciones guardadas para una experiencia sin interrupciones."
+    }
+  ]
+}
