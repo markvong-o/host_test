@@ -31,7 +31,7 @@ export default defineConfig({
     federation({
       name: "host_app",
       remotes: {
-        mfe_app: "http://localhost:5001/assets/remoteEntry.js",
+        mfe_app: "https://dellmfe.vercel.app/assets/remoteEntry.js",
       },
       shared: ["react", "react-dom"],
     }),
