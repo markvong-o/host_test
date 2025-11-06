@@ -88,13 +88,16 @@ export default defineConfig({
         assetFileNames: (assetInfo) => {
           const info = assetInfo.name || "";
           if (info.endsWith(".css")) {
-            return "assets/shared/style.[extname]";
+            return "assets/shared/style[extname]";
           }
-          return "assets/shared/[name].[extname]";
+          return "assets/shared/[name][extname]";
         },
 
         // Simplified manual chunks strategy with forced common chunk
         manualChunks: (id) => {
+          const absoluteId = resolve(id);
+          const absoluteSrcDir = resolve(__dirname, "src/");
+
           // All node_modules dependencies go into a single vendor chunk
           if (id.includes("node_modules")) {
             return "vendor";
@@ -102,13 +105,8 @@ export default defineConfig({
 
           // Everything in src/ but NOT in src/screens/ goes to common
           // Note: resolve(id) converts to absolute path for reliable checking
-          const absoluteId = resolve(id);
-          const absoluteSrcScreensDir = resolve(__dirname, "src/screens");
 
-          if (
-            absoluteId.includes(resolve(__dirname, "src/")) &&
-            !absoluteId.startsWith(absoluteSrcScreensDir + "/")
-          ) {
+          if (absoluteId.startsWith(absoluteSrcDir)) {
             return "common";
           }
 
@@ -117,7 +115,7 @@ export default defineConfig({
         },
       },
     },
-    minify: true,
+    minify: false,
     emptyOutDir: true,
     cssCodeSplit: false, // Keep CSS in a single file
     sourcemap: true,
