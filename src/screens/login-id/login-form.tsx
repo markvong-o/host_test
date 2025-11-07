@@ -1,17 +1,17 @@
-// import { useLoginIdManager } from "./hooks/useLoginIdManager";
 import PrivacyComponent from "mfe_app/PrivacyComponent";
+import PartnerComponent from "mfe_app/PartnerComponent";
 import type React from "react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "@/components/shared/hooks/useTranslation";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { LoginId } from "@auth0/auth0-acul-js";
 function LoginForm() {
   // Extracting attributes from hook made out of LoginIdInstance class of Auth0 JS SDK
   // const { loginIdInstance, texts, isPasskeyEnabled } = useLoginIdManager();
 
   document.title = "Login";
-  const [email, setEmail] = useState("");
+  const loginIdManager = new LoginId();
+  const currClientName = loginIdManager.client.name;
+  // const [email, setEmail] = useState("");
 
   // 1. Example of managing locale state
   const [locale, setLocale] = useState("en");
@@ -34,25 +34,27 @@ function LoginForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle login logic here
-    console.log("Login submitted", { email });
+    // console.log("Login submitted", { email });
   };
 
   if (loading) {
-    console.log("loading login form...");
+    // console.log("loading login form...");
   }
 
   return (
     <div className="w-full max-w-md space-y-8">
       <div className="space-y-2">
-        <h1 className="text-4xl font-light text-foreground">{t("title")}</h1>
+        <h1 className="text-4xl font-light text-foreground">
+          {currClientName === "Dell.com" ? t("title") : t("partners_title")}
+        </h1>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Google Sign In */}
-        <Button
+        <button
           type="button"
-          variant="outline"
-          className="w-full h-12 text-base font-normal bg-transparent"
+          // variant="outline"
+          className="w-full h-12 text-base font-normal bg-transparent! flex justify-center items-center !border-gray-500"
         >
           <svg className="mr-2 h-5 w-5" viewBox="0 0 24 24">
             <path
@@ -73,19 +75,19 @@ function LoginForm() {
             />
           </svg>
           {t("google_social_btn")}
-        </Button>
+        </button>
 
         {/* Email Input */}
-        <div className="space-y-2">
-          <Label htmlFor="email" className="text-sm font-normal">
+        <div className="space-y-2 flex flex-col">
+          <label htmlFor="email" className="text-left text-lg font-bold">
             {t("email_label")}
-          </Label>
-          <Input
+          </label>
+          <input
             id="email"
             type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="h-12"
+            // value={email}
+            // onChange={(e) => setEmail(e.target.value)}
+            className="h-12 border-1 border-solid border-gray-500"
             required
           />
         </div>
@@ -94,36 +96,40 @@ function LoginForm() {
         <div>
           <a
             href="#"
-            className="text-primary hover:underline text-sm font-normal"
+            className="!text-[#0064b2] hover:underline text-sm font-normal"
           >
             {t("pw_label")}
           </a>
         </div>
 
         {/* Continue Button */}
-        <Button
+        <button
           type="submit"
-          className="bg-primary w-full h-12 text-base font-normal"
+          className="!bg-[#0064b2] w-full h-12 text-white font-normal"
         >
           {t("continue_btn")}
-        </Button>
+        </button>
       </form>
 
       {/* Footer Links */}
       <div className="space-y-4 text-center text-sm">
-        <p className="text-muted-foreground">
+        <p className="!text-[#0064b2]">
           {t("missing_acct_content")}{" "}
-          <a href="#" className="text-primary hover:underline font-normal">
+          <a href="#" className="!text-[#0064b2] hover:underline font-normal">
             {t("create_btn")}
           </a>
         </p>
         <p className="text-muted-foreground">
           {t("help_content")}{" "}
-          <a href="#" className="text-primary hover:underline font-normal">
+          <a href="#" className="!text-[#0064b2] hover:underline font-normal">
             {t("faq_content")}
           </a>
         </p>
-        <PrivacyComponent />
+        {currClientName === "Dell.com" ? (
+          <PrivacyComponent />
+        ) : (
+          <PartnerComponent />
+        )}
       </div>
     </div>
   );

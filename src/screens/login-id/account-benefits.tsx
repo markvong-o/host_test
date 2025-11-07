@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Trophy, Search, User as LucideIcon, User } from "lucide-react";
 import { useTranslation } from "@/components/shared/hooks/useTranslation";
+import { LoginId } from "@auth0/auth0-acul-js";
 
 interface Benefit {
   icon: "Trophy" | "Search" | "User";
@@ -8,20 +8,17 @@ interface Benefit {
   description: string;
 }
 
-// Map of string names (from JSON) to their actual React components
-const iconMap: Record<Benefit["icon"], typeof LucideIcon> = {
-  Trophy: Trophy,
-  Search: Search,
-  User: User,
-};
+function AccountBenefits() {
+  const loginIdManager = new LoginId();
+  const currClientName = loginIdManager.client.name;
 
-export default function AccountBenefits() {
   // 1. Example of managing locale state
   const [locale, setLocale] = useState("en");
 
   // 2. Use the hook to get the translation function
   const { t, loading } = useTranslation(locale);
   const rawBenefits = t("benefits");
+  // const rawBenefits = "";
   const benefits: Benefit[] = (
     Array.isArray(rawBenefits) ? rawBenefits : []
   ) as Benefit[];
@@ -40,15 +37,17 @@ export default function AccountBenefits() {
     }
   }, []);
 
-  if(loading) {
-    console.log("loading account benefits...")
+  if (loading) {
+    // console.log("loading account benefits...");
   }
 
   return (
     <div className="w-full max-w-lg space-y-8">
       <div className="space-y-2">
         <h2 className="text-3xl font-light text-foreground text-balance">
-          {t("benefits_title")}
+          {currClientName === "Dell.com"
+            ? t("benefits_title")
+            : t("partners_benefits_title")}
         </h2>
         <p className="text-muted-foreground text-lg">
           {t("benefits_subtitle")}
@@ -57,15 +56,15 @@ export default function AccountBenefits() {
 
       <div className="space-y-6">
         {benefits.map((benefit, index) => {
-          const IconComponent = iconMap[benefit.icon];
+          // const IconComponent = iconMap[benefit.icon];
 
-          if (!IconComponent) return null; // Fallback if icon name is misspelled
+          // if (!IconComponent) return null; // Fallback if icon name is misspelled
 
           return (
             <div key={index} className="flex gap-4">
               <div className="flex-shrink-0">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                  <IconComponent className="h-6 w-6 text-primary" />
+                  {/* <IconComponent className="h-6 w-6 text-primary" /> */}
                 </div>
               </div>
               <div className="space-y-1">
@@ -81,3 +80,5 @@ export default function AccountBenefits() {
     </div>
   );
 }
+
+export default AccountBenefits;
