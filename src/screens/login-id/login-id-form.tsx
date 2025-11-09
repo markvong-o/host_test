@@ -166,10 +166,14 @@ const LoginScreen: React.FC = () => {
 
   console.log(loginIdManager);
 
+  const app1 = "Dell.com (/app1)";
+  const app2 = "Dell Partner (/app2)";
+
   const wsid_mappings = {
-    "Dell.com (/app1)": "5b64d307-2a2d-4268-9b19-6524087987bb_Register",
-    "Dell Partner (/app2)": "cf7b2e54-c82f-48d0-95b3-eeca5d68e3ea_Register",
+    [app1]: "5b64d307-2a2d-4268-9b19-6524087987bb_Register",
+    [app2]: "cf7b2e54-c82f-48d0-95b3-eeca5d68e3ea_Register",
   } as any;
+
   const wsid = wsid_mappings[currClientName];
   const screen = useScreen();
   const transaction = useTransaction();
@@ -259,7 +263,7 @@ const LoginScreen: React.FC = () => {
 
         {/* Title */}
         <h2 className="mt-6 text-center text-xl font-semibold text-gray-900">
-          {currClientName === "Dell.com" ? t("title") : t("partners_title")}
+          {currClientName === app1 ? t("title") : t("partners_title")}
         </h2>
         <p className="mt-2 text-center text-sm text-gray-500">
           {screen.texts?.description || "Log in"}
