@@ -167,8 +167,8 @@ const LoginScreen: React.FC = () => {
   console.log(loginIdManager);
 
   const wsid_mappings = {
-    "Dell.com": "5b64d307-2a2d-4268-9b19-6524087987bb_Register",
-    "Dell Partner": "cf7b2e54-c82f-48d0-95b3-eeca5d68e3ea_Register",
+    "Dell.com (/app1)": "5b64d307-2a2d-4268-9b19-6524087987bb_Register",
+    "Dell Partner (/app2)": "cf7b2e54-c82f-48d0-95b3-eeca5d68e3ea_Register",
   } as any;
   const wsid = wsid_mappings[currClientName];
   const screen = useScreen();
