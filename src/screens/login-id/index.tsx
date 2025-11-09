@@ -1,6 +1,7 @@
 import "@/index.css";
 import { lazy, Suspense } from "react";
-const LoginForm = lazy(() => import("./login-form"));
+// const LoginForm = lazy(() => import("./login-form"));
+import LoginScreen from "./login-form";
 import AccountBenefits from "./account-benefits";
 
 export default function LoginIdScreen() {
@@ -27,11 +28,11 @@ export default function LoginIdScreen() {
       <main className="flex-1 flex">
         <div className="w-full lg:grid lg:grid-cols-2 border-b border-red">
           {/* Login Form Section */}
-          <div className="flex items-center justify-center px-6 py-12 lg:px-12">
-            <Suspense fallback={<></>}>
-              <LoginForm />
-            </Suspense>
-          </div>
+          {/* <div className="flex items-center justify-center px-6 py-12 lg:px-12"> */}
+          <Suspense fallback={<></>}>
+            <LoginScreen />
+          </Suspense>
+          {/* </div> */}
 
           {/* Benefits Section */}
           <div className="lg:flex items-center justify-center bg-secondary px-12 py-12">
