@@ -1,5 +1,5 @@
-import PrivacyComponent from "mfe_app/PrivacyComponent";
-import PartnerComponent from "mfe_app/PartnerComponent";
+// import PrivacyComponent from "mfe_app/PrivacyComponent";
+// import PartnerComponent from "mfe_app/PartnerComponent";
 import type React from "react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "@/components/shared/hooks/useTranslation";
@@ -12,6 +12,11 @@ function LoginForm() {
   const loginIdManager = new LoginId();
   const currClientName = loginIdManager.client.name;
   // const [email, setEmail] = useState("");
+  const wsid_mappings = {
+    "Dell.com": "5b64d307-2a2d-4268-9b19-6524087987bb_Register",
+    "Dell Partner": "cf7b2e54-c82f-48d0-95b3-eeca5d68e3ea_Register",
+  } as any;
+  const wsid = wsid_mappings[currClientName];
 
   // 1. Example of managing locale state
   const [locale, setLocale] = useState("en");
@@ -111,8 +116,10 @@ function LoginForm() {
         </button>
       </form>
 
-      {/* Footer Links */}
-      <div className="space-y-4 text-center text-sm">
+      <div className="space-y-4 text-sm">
+        <dell-pmc-ncm data-wsid={wsid} data-locale="us-en"></dell-pmc-ncm>
+        {/* Footer Links */}
+        {/* <div className="space-y-4 text-center text-sm">
         <p className="!text-[#0064b2]">
           {t("missing_acct_content")}{" "}
           <a href="#" className="!text-[#0064b2] hover:underline font-normal">
@@ -130,6 +137,7 @@ function LoginForm() {
         ) : (
           <PartnerComponent />
         )}
+      </div> */}
       </div>
     </div>
   );
