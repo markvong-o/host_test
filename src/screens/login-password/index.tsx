@@ -1,10 +1,10 @@
 import "@/index.css";
 import { Suspense } from "react";
 // const LoginForm = lazy(() => import("./login-form"));
-import LoginScreen from "./login-id-form";
+import LoginPasswordForm from "./login-password-form";
 import AccountBenefits from "../shared/account-benefits";
 
-export default function LoginIdScreen() {
+export default function LoginPasswordScreen() {
   return (
     <div className="!min-w-full !min-h-full !w-full !h-full flex flex-col">
       {/* Header */}
@@ -30,7 +30,7 @@ export default function LoginIdScreen() {
           {/* Login Form Section */}
           {/* <div className="flex items-center justify-center px-6 py-12 lg:px-12"> */}
           <Suspense fallback={<></>}>
-            <LoginScreen />
+            <LoginPasswordForm />
           </Suspense>
           {/* </div> */}
 

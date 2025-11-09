@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "@/components/shared/hooks/useTranslation";
-import { LoginId } from "@auth0/auth0-acul-js";
+import { useCurrentScreen } from "@auth0/auth0-acul-react/login-id";
+import { Trophy, Search, User as LucideIcon, User } from "lucide-react";
 
 interface Benefit {
   icon: "Trophy" | "Search" | "User";
@@ -8,9 +9,17 @@ interface Benefit {
   description: string;
 }
 
+// Map of string names (from JSON) to their actual React components
+const iconMap: Record<Benefit["icon"], typeof LucideIcon> = {
+  Trophy: Trophy,
+  Search: Search,
+  User: User,
+};
+
 function AccountBenefits() {
-  const loginIdManager = new LoginId();
-  const currClientName = loginIdManager.client.name;
+  const currentScreen = useCurrentScreen();
+  // const loginIdManager = new LoginId();
+  const currClientId = currentScreen?.client?.id;
 
   // 1. Example of managing locale state
   const [locale, setLocale] = useState("en");
@@ -45,7 +54,7 @@ function AccountBenefits() {
     <div className="w-full max-w-lg space-y-8">
       <div className="space-y-2">
         <h2 className="text-3xl font-light text-foreground text-balance">
-          {currClientName === "Dell.com"
+          {currClientId === "4lnpYytsL84qlKMy9uuwrzwZORdMMwP8"
             ? t("benefits_title")
             : t("partners_benefits_title")}
         </h2>
@@ -56,15 +65,15 @@ function AccountBenefits() {
 
       <div className="space-y-6">
         {benefits.map((benefit, index) => {
-          // const IconComponent = iconMap[benefit.icon];
+          const IconComponent = iconMap[benefit.icon];
 
-          // if (!IconComponent) return null; // Fallback if icon name is misspelled
+          if (!IconComponent) return null; // Fallback if icon name is misspelled
 
           return (
             <div key={index} className="flex gap-4">
               <div className="flex-shrink-0">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                  {/* <IconComponent className="h-6 w-6 text-primary" /> */}
+                  <IconComponent className="h-6 w-6 text-primary" />
                 </div>
               </div>
               <div className="space-y-1">

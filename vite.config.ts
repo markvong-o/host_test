@@ -95,20 +95,21 @@ export default defineConfig({
 
         // Simplified manual chunks strategy with forced common chunk
         manualChunks: (id) => {
-          const absoluteId = resolve(id);
-          const absoluteSrcDir = resolve(__dirname, "src/");
+          console.log(id);
+          // const absoluteId = resolve(id);
+          // const absoluteSrcDir = resolve(__dirname, "src/");
 
           // All node_modules dependencies go into a single vendor chunk
-          if (id.includes("node_modules")) {
-            return "vendor";
-          }
+          // if (id.includes("node_modules")) {
+          //   return "vendor";
+          // }
 
-          // Everything in src/ but NOT in src/screens/ goes to common
-          // Note: resolve(id) converts to absolute path for reliable checking
+          // // Everything in src/ but NOT in src/screens/ goes to common
+          // // Note: resolve(id) converts to absolute path for reliable checking
 
-          if (absoluteId.startsWith(absoluteSrcDir)) {
-            return "common";
-          }
+          // if (absoluteId.startsWith(absoluteSrcDir)) {
+          //   return "common";
+          // }
 
           // For screen-specific code or other cases, let Rollup decide
           return undefined;
