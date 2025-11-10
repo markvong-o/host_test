@@ -166,15 +166,17 @@ const LoginScreen: React.FC = () => {
 
   console.log(loginIdManager);
 
-  const app1 = "Dell.com (/app1)";
-  const app2 = "Dell Partner (/app2)";
+  const app1 = "Premier Portal";
+  const app2 = "CloudIQ Portal";
 
   const wsid_mappings = {
     [app1]: "5b64d307-2a2d-4268-9b19-6524087987bb_Register",
     [app2]: "cf7b2e54-c82f-48d0-95b3-eeca5d68e3ea_Register",
   } as any;
 
-  const wsid = wsid_mappings[currClientName];
+  const [wsid, setWsid] = useState(
+    "5b64d307-2a2d-4268-9b19-6524087987bb_Register"
+  );
   const screen = useScreen();
   const transaction = useTransaction();
   const usernameRef = useRef<HTMLInputElement>(null);
@@ -199,6 +201,9 @@ const LoginScreen: React.FC = () => {
     if (authParams) {
       const l = authParams["ext"]["ext-locale"];
       setLocale(l);
+    }
+    if (wsid_mappings[currClientName]) {
+      setWsid(wsid_mappings[currClientName]);
     }
   }, []);
 
