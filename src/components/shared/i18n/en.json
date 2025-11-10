@@ -1,6 +1,6 @@
 {
-  "title": "Sign In",
-  "partners_title": "Partner Sign In",
+  "title": "Premier Sign In",
+  "cloudiq_title": "Cloud IQ Sign In",
   "google_social_btn": "Google Sign In",
   "email_label": "Email Address",
   "pw_label": "Forgot password?",
@@ -9,8 +9,8 @@
   "create_btn": "Create an account here",
   "help_content": "Need help?",
   "faq_content": "FAQ",
-  "partners_benefits_title": "Partner Account Benefits",
-  "benefits_title": "Account Benefits",
+  "benefits_title": "Premier Account Benefits",
+  "cloudiq_benefits_title": "CloudIQ Account Benefits",
   "benefits_subtitle": "Manage it all from your account",
   "benefits": [
     {

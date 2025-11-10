@@ -1,5 +1,6 @@
 {
   "title": "Iniciar Sesión",
+  "cloudiq_title": "Iniciar sesión en Cloud IQ",
   "google_social_btn": "Iniciar Sesión con Google",
   "email_label": "Correo Electrónico",
   "pw_label": "¿Olvidaste la contraseña?",
@@ -9,6 +10,7 @@
   "help_content": "¿Necesitas ayuda?",
   "faq_content": "Preguntas Frecuentes (FAQ)",
   "benefits_title": "Beneficios de la Cuenta",
+  "cloudiq_benefits_title": "Beneficios de la cuenta CloudIQ",
   "benefits_subtitle": "Administra todo desde tu cuenta",
   "benefits": [
     {

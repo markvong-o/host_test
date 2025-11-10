@@ -54,9 +54,9 @@ function AccountBenefits() {
     <div className="w-full max-w-lg space-y-8">
       <div className="space-y-2">
         <h2 className="text-3xl font-light text-foreground text-balance">
-          {currClientId === "nrS05kxzIQJu4FAFgqLYDezURlcrzRKD"
+          {currClientId === "9auZKsQr3JfIQPqmRK8Ho61BGouiE7c4"
             ? t("benefits_title")
-            : t("partners_benefits_title")}
+            : t("cloudiq_benefits_title")}
         </h2>
         <p className="text-muted-foreground text-lg">
           {t("benefits_subtitle")}
