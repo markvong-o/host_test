@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 // Define the shape of the function that imports a translation file
 type TranslationLoader = () => Promise<{ default: Record<string, any> }>;
@@ -6,8 +6,8 @@ type TranslationLoader = () => Promise<{ default: Record<string, any> }>;
 // Map of available locales to their corresponding JSON files.
 const translations: Record<string, TranslationLoader> = {
   // NOTE: Assuming you have separate files, pointing 'es' to its correct file.
-  'en': () => import('@/components/shared/i18n/en.json'),
-  'es': () => import('@/components/shared/i18n/es.json'), 
+  "us-en": () => import("@/components/shared/i18n/en.json"),
+  "es-es": () => import("@/components/shared/i18n/es.json"),
   // Add other languages here
 };
 
@@ -29,30 +29,32 @@ export function useTranslation(locale?: string): TranslationResult {
     let currentLocale = locale;
 
     // 1. Fallback: If locale is undefined, try to read from window context
-    if (!currentLocale && typeof window !== 'undefined') {
-      currentLocale = navigator.language.split('-')[0] || 'en';
+    if (!currentLocale && typeof window !== "undefined") {
+      currentLocale = navigator.language.split("-")[0] || "en";
     }
 
     // 2. Find the correct import function, falling back to 'en'
-    const importFn = translations[currentLocale!] || translations['en'];
+    const importFn = translations[currentLocale!] || translations["en"];
 
     setLoading(true);
-    
+
     // 3. Dynamically import the JSON file
     importFn()
-      .then(module => {
+      .then((module) => {
         // Module is the JSON object imported from the file
-        setMessages(module.default); 
+        setMessages(module.default);
       })
-      .catch(error => {
-        console.error(`Failed to load translation for locale: ${currentLocale}`, error);
+      .catch((error) => {
+        console.error(
+          `Failed to load translation for locale: ${currentLocale}`,
+          error
+        );
         setMessages({});
       })
       .finally(() => {
         setLoading(false);
       });
-
-  }, [locale]); 
+  }, [locale]);
 
   // The translation function now returns string | any, allowing arrays/objects to pass through
   const t = (key: string): string | any => messages[key] || key;
